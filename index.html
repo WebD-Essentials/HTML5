@@ -5,19 +5,96 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <title>HTML5 essence</title>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+            * {
+                font-family: 'Poppins', sans-serif;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th,
+            td {
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+        </style>
     </head>
 
     <body>
-        <h2>
-            <a href="./startingTemplate/">Starting template</a>
-        </h2>
-        <h2>
-            <a href="./texts-headings-paragraphs/">Texts, Headings and Paragraphs</a>
-        </h2>
-        <h2>
-            <a href="./lists/">Lists</a>
-        </h2>
+
+        <h1>HTML5 essence</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Title</th>
+                    <th>Preview</th>
+                    <th>Hashnode Blog</th>
+                    <th>Github Page Blog</th>
+                    <th>Source Code</th>
+                    <th>Download Code</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+        <script>
+
+            const repoURL = "https://github.com/WebD-Essentials/HTML5";
+            const githubPage = "https://razaahmad333.github.io/hashnode-blogs/";
+            fetch("./data.json")
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+
+                    let table = document.querySelector("table tbody");
+
+                    data.forEach(blog => {
+                        let row = table.insertRow();
+
+                        let date = row.insertCell(0);
+                        let title = row.insertCell(1);
+                        let preview = row.insertCell(2);
+                        let hashnodeBlog = row.insertCell(3);
+                        let githubPageBlog = row.insertCell(4);
+                        let sourceCode = row.insertCell(5);
+                        let downloadCode = row.insertCell(6);
+
+                        date.innerHTML = blog.date;
+                        title.innerHTML = blog.title;
+                        preview.innerHTML = `<a href="./${blog.folder}/">Preview</a>`;
+                        hashnodeBlog.innerHTML = `<a href="${blog.hashnodeBlog}" target="_blank">Hashnode Blog</a>`;
+                        githubPageBlog.innerHTML = `<a href="${githubPage}${blog.githubFileID}" target="_blank">Github Page Blog</a>`;
+                        sourceCode.innerHTML = `<a href="${repoURL}/tree/${blog.folder}" target="_blank">Source Code</a>`;
+                        downloadCode.innerHTML = `<a href="${repoURL}/archive/refs/heads/${blog.folder}.zip" target="_blank">Download Code</a>`;
+                    });
+
+                }
+                );
+        </script>
+
     </body>
 
 </html>
