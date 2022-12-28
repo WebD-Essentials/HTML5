@@ -17,15 +17,32 @@
                 font-family: 'Poppins', sans-serif;
             }
 
+            .cursor {
+                cursor: pointer;
+            }
+
             table {
                 border-collapse: collapse;
                 width: 100%;
+            }
+
+            .hideAtLarge {
+                display: none;
+            }
+
+            .hideAtSmall {
+                display: block;
             }
 
             th,
             td {
                 text-align: left;
                 padding: 8px;
+            }
+
+            .desc {
+                font-size: 12px;
+                width: 300px;
             }
 
             tr:nth-child(even) {
@@ -36,68 +53,116 @@
                 background-color: #E34C26;
                 color: white;
             }
+
+            @media screen and (max-width: 600px) {
+                table {
+                    border: 0;
+                }
+
+                .hideAtLarge {
+                    display: block;
+                }
+
+                .hideAtSmall {
+                    display: none;
+                }
+
+                thead {
+                    display: none;
+                }
+
+                tr {
+                    margin-bottom: 15px;
+                    display: block;
+                    border-bottom: 2px solid #ddd;
+                }
+
+                td {
+                    display: block;
+                    font-size: 13px;
+                    border-bottom: 1px solid #ddd;
+                }
+
+                td::before {
+                    content: attr(data-label);
+                    float: right;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+
+                td:last-child {
+                    border-bottom: 0;
+                }
+            }
         </style>
+
     </head>
 
     <body>
 
         <h1>HTML5 essence</h1>
+        written by - <a href="https://ahmad-raza.vercel.app" target="_blank">Ahmad Raza</a> <br> <br>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Title</th>
-                    <th>Preview</th>
-                    <th>@hashnode</th>
-                    <th>@gh-page</th>
-                    <th>Source Code</th>
-                    <th>Download Code</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Title</th>
+                        <th>Preview</th>
+                        <th>@hashnode</th>
+                        <th>@gh-page</th>
+                        <th>Source Code</th>
+                        <th>Download Code</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <script>
 
             const firebaseBaseURL = `https://quotesman11-default-rtdb.firebaseio.com/blogs.json?orderBy=\"series\"&equalTo=\"HTML5\"`
-
-            fetch(firebaseBaseURL)
-                .then(response => response.json())
-                .then(data => {
-                    insertDataIntoTable(Object.values(data));
-                });
-
+            const table = document.querySelector("table tbody");
             const repoURL = "https://github.com/WebD-Essentials/HTML5";
             const githubPage = "https://razaahmad333.github.io/hashnode-blogs/";
 
 
+            fetch(firebaseBaseURL)
+                .then(response => response.json())
+                .then(data => {
+                    table.innerHTML = "";
+                    insertDataIntoTable(Object.values(data));
+                });
+
+
             function insertDataIntoTable(blogs) {
-                let table = document.querySelector("table tbody");
-
                 blogs.forEach(blog => {
-                    let row = table.insertRow();
-                    let date = row.insertCell(0);
-                    let title = row.insertCell(1);
-                    let preview = row.insertCell(2);
-                    let hashnodeBlog = row.insertCell(3);
-                    let githubPageBlog = row.insertCell(4);
-                    let sourceCode = row.insertCell(5);
-                    let downloadCode = row.insertCell(6);
-                    let description = row.insertCell(7);
-                    date.innerHTML = blog.date;
-                    title.innerHTML = blog.title;
-                    preview.innerHTML = `<a href="./${blog.folder}/">Preview</a>`;
-                    hashnodeBlog.innerHTML = `<a href="${blog.link}" target="_blank">On Hashnode</a>`;
-                    githubPageBlog.innerHTML = `<a href="${blog.ghPageLink}" target="_blank">On Github Page</a>`;
-                    sourceCode.innerHTML = `<a href="${repoURL}/tree/${blog.folder}" target="_blank">Source Code</a>`;
-                    downloadCode.innerHTML = `<a href="${repoURL}/archive/refs/heads/${blog.folder}.zip" target="_blank">Download Code</a>`;
-                    description.innerHTML = `<span style="cursor:pointer;"> Hover me </ span>`;
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td data-label="Date">${blog.date}</td>
+                        <td data-label="Title">${blog.title}</td>
+                        <td data-label="Preview"><a href="./${blog.folder}" target="_blank">Live</a></td>
+                        <td data-label="@hashnode"><a href="${blog.link}" target="_blank">Read </a></td>
+                        <td data-label="@gh-page"><a href="${blog.ghPageLink}" target="_blank">Read</a></td>
+                        <td data-label="Source Code"><a href="${repoURL}/tree/${blog.folder}" target="_blank">Open</a></td>
+                        <td data-label="Download Code"><a href="${repoURL}/archive/refs/heads/${blog.folder}.zip" target="_blank">Download Code</a></td>
+                        <td data-label="Description" class="hideAtSmall desc " title=${blog.description}> ${blog.description} </td>
+                        <td  class="hideAtLarge" >${blog.description}</td>
+                    `;
+                    table.appendChild(row);
 
-                    description.title = blog.description;
                 });
             }
 
