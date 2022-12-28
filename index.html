@@ -33,7 +33,7 @@
             }
 
             th {
-                background-color: #4CAF50;
+                background-color: #E34C26;
                 color: white;
             }
         </style>
@@ -49,10 +49,11 @@
                     <th>Date</th>
                     <th>Title</th>
                     <th>Preview</th>
-                    <th>Hashnode Blog</th>
-                    <th>Github Page Blog</th>
+                    <th>@hashnode</th>
+                    <th>@gh-page</th>
                     <th>Source Code</th>
                     <th>Download Code</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,37 +63,44 @@
 
         <script>
 
-            const repoURL = "https://github.com/WebD-Essentials/HTML5";
-            const githubPage = "https://razaahmad333.github.io/hashnode-blogs/";
-            fetch("./data.json")
+            const firebaseBaseURL = `https://quotesman11-default-rtdb.firebaseio.com/blogs.json?orderBy=\"series\"&equalTo=\"HTML5\"`
+
+            fetch(firebaseBaseURL)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
+                    insertDataIntoTable(Object.values(data));
+                });
 
-                    let table = document.querySelector("table tbody");
+            const repoURL = "https://github.com/WebD-Essentials/HTML5";
+            const githubPage = "https://razaahmad333.github.io/hashnode-blogs/";
 
-                    data.forEach(blog => {
-                        let row = table.insertRow();
 
-                        let date = row.insertCell(0);
-                        let title = row.insertCell(1);
-                        let preview = row.insertCell(2);
-                        let hashnodeBlog = row.insertCell(3);
-                        let githubPageBlog = row.insertCell(4);
-                        let sourceCode = row.insertCell(5);
-                        let downloadCode = row.insertCell(6);
+            function insertDataIntoTable(blogs) {
+                let table = document.querySelector("table tbody");
 
-                        date.innerHTML = blog.date;
-                        title.innerHTML = blog.title;
-                        preview.innerHTML = `<a href="./${blog.folder}/">Preview</a>`;
-                        hashnodeBlog.innerHTML = `<a href="${blog.hashnodeBlog}" target="_blank">Hashnode Blog</a>`;
-                        githubPageBlog.innerHTML = `<a href="${githubPage}${blog.githubFileID}" target="_blank">Github Page Blog</a>`;
-                        sourceCode.innerHTML = `<a href="${repoURL}/tree/${blog.folder}" target="_blank">Source Code</a>`;
-                        downloadCode.innerHTML = `<a href="${repoURL}/archive/refs/heads/${blog.folder}.zip" target="_blank">Download Code</a>`;
-                    });
+                blogs.forEach(blog => {
+                    let row = table.insertRow();
+                    let date = row.insertCell(0);
+                    let title = row.insertCell(1);
+                    let preview = row.insertCell(2);
+                    let hashnodeBlog = row.insertCell(3);
+                    let githubPageBlog = row.insertCell(4);
+                    let sourceCode = row.insertCell(5);
+                    let downloadCode = row.insertCell(6);
+                    let description = row.insertCell(7);
+                    date.innerHTML = blog.date;
+                    title.innerHTML = blog.title;
+                    preview.innerHTML = `<a href="./${blog.folder}/">Preview</a>`;
+                    hashnodeBlog.innerHTML = `<a href="${blog.link}" target="_blank">On Hashnode</a>`;
+                    githubPageBlog.innerHTML = `<a href="${blog.ghPageLink}" target="_blank">On Github Page</a>`;
+                    sourceCode.innerHTML = `<a href="${repoURL}/tree/${blog.folder}" target="_blank">Source Code</a>`;
+                    downloadCode.innerHTML = `<a href="${repoURL}/archive/refs/heads/${blog.folder}.zip" target="_blank">Download Code</a>`;
+                    description.innerHTML = `<span style="cursor:pointer;"> Hover me </ span>`;
 
-                }
-                );
+                    description.title = blog.description;
+                });
+            }
+
         </script>
 
     </body>
