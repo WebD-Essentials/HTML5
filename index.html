@@ -178,6 +178,47 @@
                     border-bottom: 0;
                 }
             }
+
+            @media screen and (max-width: 600px) {
+                table {
+                    border: 0;
+                }
+
+                .hideAtLarge {
+                    display: block;
+                }
+
+                .hideAtSmall {
+                    display: none;
+                }
+
+                thead {
+                    display: none;
+                }
+
+                tr {
+                    margin-bottom: 15px;
+                    display: block;
+                    border-bottom: 2px solid #ddd;
+                }
+
+                td {
+                    display: block;
+                    font-size: 13px;
+                    border-bottom: 1px solid #ddd;
+                }
+
+                td::before {
+                    content: attr(data-label);
+                    float: right;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+
+                td:last-child {
+                    border-bottom: 0;
+                }
+            }
         </style>
 
     </head>
@@ -229,7 +270,6 @@
                     table.innerHTML = "";
                     insertDataIntoTable(Object.values(data));
                 });
-
 
 
             function insertDataIntoTable(blogs) {
