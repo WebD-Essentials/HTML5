@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" type="image/png" href="../S-LOGO.png" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Material Icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <!-- Font awesome icons -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <title>HTML5 | 04 | Images, audio and videos</title>
+    </head>
+
+    <body>
+        <h2>
+            <a href="../index.html">Home page </a>
+        </h2>
+        <hr>
+
+        <h2>
+            Images, audio and videos, iframes and objects
+        </h2>
+
+        <div id="images">
+            <h2>
+                Images
+            </h2>
+
+            <h4> From local source (bag picture available in images folder) </h4>
+            <img src="./images/bags.jpg" alt="a bag">
+
+            <h4> From local source (image available in root folder) </h4>
+            <img src="./pencil.jpg" alt="a pencil" width="100" height="100" border="2">
+
+            <h4> From external source </h4>
+            <img src="https://cdn.pixabay.com/photo/2018/04/26/16/39/beach-3352363__340.jpg" alt="a beach">
+
+            <hr>
+        </div>
+
+        <div id="audios">
+            <h2>
+                Audio
+            </h2>
+
+            <h4> From local source (audio available in root folder) </h4>
+            <audio src="./peaceful_music.mp3" controls>
+            </audio>
+
+            <h4> From external source ( muted and autoplay is on ) </h4>
+            <audio src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" controls="true" autoplay muted>
+            </audio>
+
+            <hr>
+        </div>
+
+        <div id="videos">
+            <h2>Videos</h2>
+
+            <h4>From external source</h5>
+
+                <video src="http://techslides.com/demos/sample-videos/small.ogv" width="600" controls loop>
+                </video>
+
+                <h4>From local source</h4>
+                <video src="./videos/mov_bbb.mp4" width="500" controls>
+                </video>
+                <hr>
+        </div>
+
+
+        <div id="iframes">
+            <h2>iframe</h2>
+
+            <h4>Spotify iframe</h4>
+            <iframe style="border-radius:12px"
+                src="https://open.spotify.com/embed/track/3VM35337X7Ro1tesUHnZ95?utm_source=generator" width="100%"
+                height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+
+            <h4>Youtube iframe</h4>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/MhTDp5FwfmM" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+
+            <h4>Google iframe</h4>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.8198184838316!2d-122.15238048475987!3d37.39409317983052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb075776f1c3b%3A0xccc17e4da6b38370!2sTesla%20HQ!5e0!3m2!1sen!2sin!4v1672715268459!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <hr>
+        </div>
+
+        <div id="icons">
+            <h2>Icons</h2>
+
+            <h4>Material Icons</h4>
+            <i class="material-icons" style="color: red;">cloud</i>
+            <i class="material-icons">favorite</i>
+            <i class="material-icons">attachment</i>
+            <i class="material-icons">computer</i>
+            <i class="material-icons">traffic</i>
+
+
+            <h4>Font Awesome Icons</h4>
+            <i class="fa fa-cloud"></i>
+            <i class="fa fa-heart"></i>
+            <i class="fa fa-car"></i>
+            <i class="fa fa-file"></i>
+            <i class="fa fa-bars"></i>
+            <hr>
+        </div>
+
+        <div id="objects">
+            <h2>Objects</h2>
+
+            <h4>From external source</h4>
+            <object type="application/pdf"
+                data="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" width="750" height="400">
+            </object>
+
+            <h4>From local source</h4>
+            <object type="application/pdf" data="./pdf-example-html-cheetsheet.pdf" width="750" height="400">
+            </object>
+            <hr>
+        </div>
+
+
+        <!-- Code to embed a tweet, copy it from twitter -->
+        <div id="embed-tweet">
+            <h2> Embed Tweet</h2>
+            <blockquote class="twitter-tweet">
+                <p lang="en" dir="ltr">Hi 👋,<br>I&#39;m Ahmad Raza. <br>I will help you with web development. <br>Write
+                    blogs, share useful contents and collaborate.<br><br>My goals for 2023 🏹 <br>💠 add more blogs to
+                    Webd-Essentials series at <a
+                        href="https://twitter.com/hashnode?ref_src=twsrc%5Etfw">@hashnode</a><br>💠
+                    initiate
+                    &quot;skillbook&quot; open source project and share every experience here</p>&mdash; Ahmad Raza
+                (@ahmadraza946_) <a
+                    href="https://twitter.com/ahmadraza946_/status/1609374693659934720?ref_src=twsrc%5Etfw">January 1,
+                    2023</a>
+            </blockquote>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+
+    </body>
+
+</html>
