@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" type="image/png" href="../S-LOGO.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tables | HTML5</title>
+    </head>
+
+    <body>
+
+        <h2>
+            <a href="../index.html">Home page </a>
+        </h2>
+        <hr>
+        <!-- This is a comment in html, it exists so that developer who is coding can write some notes for himself -->
+        <h2 id="normalTable">A typical normal table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>34</td>
+                </tr>
+                <tr>
+                    <td>Jane</td>
+                    <td>Doe</td>
+                    <td>24</td>
+
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>Smith</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Jane</td>
+                    <td>Smith</td>
+                    <td>25</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">Total</td>
+                    <td>113</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <hr>
+
+        <h2 id="withAttr">A table with border, spacing between cells and spacing inside cells</h2>
+
+        <table border="1" cellspacing="10" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>34</td>
+                </tr>
+                <tr>
+                    <td>Jane</td>
+                    <td>Doe</td>
+                    <td>24</td>
+
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>Smith</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Jane</td>
+                    <td>Smith</td>
+                    <td>25</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">Total</td>
+                    <td>113</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <hr>
+
+        <h2>You can also create a table without thead, tbody and tfoot, just add rows </h2>
+        <table border="1" cellpadding="20">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2 id="withColspan2">A table with a colspan of 2 in of its cell</h2>
+
+        <table border="1" cellpadding="20">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td colspan="2">5 &emsp;&emsp;6 </td>
+                <!-- <td>6</td> -->
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2 id="withColspan3">A table with a colspan of 3 in of its cell</h2>
+
+        <table border="1" cellpadding="20">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td colspan="3">4 &emsp;&emsp; 5 &emsp;&emsp; 6</td>
+                <!-- <td>5</td> -->
+                <!-- <td>6</td> -->
+
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2 id="withRowspan2">A table with a rowspan of 2 in of its cell</h2>
+
+        <table border="1" cellpadding="20">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td rowspan="2">5 <br><br><br> 8</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <!-- <td>8</td> -->
+                <td>9</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2 id="withRowspan3">A table with a rowspan of 3 in of its cell</h2>
+
+        <table border="1" cellpadding="20">
+            <tr>
+                <td>1</td>
+                <td rowspan="3">2 <br><br><br> 5 <br><br><br> 8</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <!-- <td>5</td> -->
+                <td>6</td>
+
+            </tr>
+            <tr>
+                <td>7</td>
+                <!-- <td>8</td> -->
+                <td>9</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2 id="withRowspanAndColspan">A table with a rowspan and colspan in of its cell</h2>
+
+        <table border="1" cellpadding="20">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td rowspan="2" colspan="2" bgcolor="yellow">5 6 <br> 8 9</td>
+                <!-- <td>6</td> -->
+
+            </tr>
+            <tr>
+                <td>7</td>
+                <!-- <td>8</td> -->
+                <!-- <td>9</td> -->
+            </tr>
+        </table>
+
+        <h2>A table with a colspan of 2 in of its cell and if I didn't remove the next cell infront of it</h2>
+
+        <table border="1" cellpadding="20">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td colspan="2">5 &emsp;&emsp;6 </td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </table>
+
+        <!-- ignore this line, we will be learning styling in CSs series -->
+        <div style="margin-top: 600px;" />
+    </body>
+
+</html>
